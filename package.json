@@ -1,0 +1,17 @@
+{
+  "name": "beer-temp-service",
+  "version": "0.1.0",
+  "description": "Micro service that accepts/sends temperature related requests to a UI, as well as write/read to a database.",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "T.LeBlanc",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "minimist": "^1.2.0",
+    "sqlite3": "^3.1.8"
+  }
+}
