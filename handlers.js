@@ -24,7 +24,7 @@ module.exports.temperatureHandler = function temperatureHandler(req, res) {
   console.log('[INFO]: ' + req.method + ' ' + req.url + ' starting.');
 
   var body = req.body;
-  console.log('Body: ' + body);
+  console.log('Room: ' + body.room + '*F, Outside: ' + body.weather + '*F');
 
   var jsonResponse = {};
   jsonResponse.message = 'Ok!'
