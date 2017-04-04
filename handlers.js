@@ -1,11 +1,11 @@
-'use strict'
-
 var error = require('./helpers/error');
 var packageJson = require('./package.json');
+var logic = require('./logic');
 
 
 // Request handler for ping route
 module.exports.pingHandler = function pingHandler(req, res) {
+  'use strict';
   console.log('[INFO]: ' + req.method + ' ' + req.url + ' starting.');
 
   // Parse service information from package.json to use in ping message
@@ -21,20 +21,31 @@ module.exports.pingHandler = function pingHandler(req, res) {
 
 // Route that handles incoming temperatures
 module.exports.temperatureHandler = function temperatureHandler(req, res) {
-  console.log('[INFO]: ' + req.method + ' ' + req.url + ' starting.');
+  'use strict';
+  // console.log('[INFO]: ' + req.method + ' ' + req.url + ' starting.');
 
   var body = req.body;
-  console.log('Room: ' + body.room + '*F, Outside: ' + body.weather + '*F');
+  logic.postTemperatures(body, function(err, results) {
+    if(!err) {
+      var jsonResponse = {};
+      jsonResponse.message = 'Ok!';
+      res.json(jsonResponse);
 
-  var jsonResponse = {};
-  jsonResponse.message = 'Ok!'
-  res.json(jsonResponse);
+      res.status(201);
+      res.send(results);
+    } else {
+      console.log("Error: ", err);
+    }
+  });
 
-  console.log('[INFO]: ' + req.method + ' ' + req.url + ' finished.');
+  // console.log('Room: ' + body.room + '*F, Outside: ' + body.weather + '*F');
+
+  console.log('[INFO]: ' + req.method + ' ' + req.url + ' completed.');
 };
 
 // Catch all handler for non-provisioned 404s
 module.exports.noRouteHandler = function noRouteHandler(req, res) {
+  'use strict';
   var errorObject = error.generate('routeNotFoundError', req.path + ' Route not found.', 404);
 
   res.status(404).send(errorObject);
