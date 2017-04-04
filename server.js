@@ -15,7 +15,7 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 /* **************** ROUTES **************** */
 app.get('/ping', handlers.pingHandler);
-app.post('/temperature', handlers.temperatureHandler);
+app.post('/temperatures', handlers.temperatureHandler);
 app.get('*', handlers.noRouteHandler);
 /* **************** ROUTES **************** */
 
