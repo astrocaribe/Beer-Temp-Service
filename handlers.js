@@ -6,7 +6,6 @@ var logic = require('./logic');
 // Request handler for ping route
 module.exports.pingHandler = function pingHandler(req, res) {
   'use strict';
-  console.log('[INFO]: ' + req.method + ' ' + req.url + ' starting.');
 
   // Parse service information from package.json to use in ping message
 
@@ -16,7 +15,6 @@ module.exports.pingHandler = function pingHandler(req, res) {
   jsonResponse.description = packageJson.description;
 
   res.send(jsonResponse);
-  console.log('[INFO]: ' + req.method + ' ' + req.url + ' finished.');
 };
 
 // Route that handles incoming temperatures
@@ -34,13 +32,11 @@ module.exports.temperatureHandler = function temperatureHandler(req, res) {
       res.status(201);
       res.send(results);
     } else {
-      console.log("Error: ", err);
+      req.log.error("Error: ", err);
     }
   });
 
   // console.log('Room: ' + body.room + '*F, Outside: ' + body.weather + '*F');
-
-  console.log('[INFO]: ' + req.method + ' ' + req.url + ' completed.');
 };
 
 // Catch all handler for non-provisioned 404s
