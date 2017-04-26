@@ -4,6 +4,9 @@ var express = require('express');
 var parseArgs = require('minimist');
 var bodyParser = require('body-parser');
 
+var printer = require('pino-http-print')();
+var pinoExpress = require('express-pino-logger')(printer);
+
 // var config = require('./config/config');
 var handlers = require('./handlers');
 
@@ -12,6 +15,7 @@ var port = args.port || 4000;
 
 var app = express();
 app.use(bodyParser.json({ type: 'application/json' }));
+app.use(pinoExpress);
 
 /* **************** ROUTES **************** */
 app.get('/ping', handlers.pingHandler);
