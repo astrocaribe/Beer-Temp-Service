@@ -2,6 +2,7 @@
 
 
 const express = require('express');
+const path = require('path');
 const favicon = require('express-favicon');
 
 var parseArgs = require('minimist');
@@ -18,7 +19,7 @@ var port = args.port || 4000;
 
 var app = express();
 app.use(bodyParser.json({ type: 'application/json' }));
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(path.resolve(__dirname + '/public/favicon.ico')));
 app.use(pinoExpress);
 
 /* **************** ROUTES **************** */
