@@ -15,7 +15,7 @@ var pinoExpress = require('express-pino-logger')(printer);
 var handlers = require('./handlers');
 
 var args = parseArgs(process.argv.slice(1));
-var port = args.port || 4000;
+var port = args.port || process.env.PORT || 4000;
 
 var app = express();
 app.use(bodyParser.json({ type: 'application/json' }));
