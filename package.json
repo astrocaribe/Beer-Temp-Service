@@ -1,6 +1,6 @@
 {
   "name": "beer-temp-service",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Micro service that accepts/sends temperature related requests to a UI, as well as write/read to a database.",
   "main": "server.js",
   "scripts": {
@@ -14,16 +14,16 @@
     "express-favicon": "^2.0.1",
     "express-pino-logger": "^2.0.0",
     "minimist": "^1.2.0",
+    "pg": "^7.11.0",
     "pino": "^4.3.0",
-    "pino-http-print": "^1.0.1",
-    "sqlite3": "^3.1.8"
+    "pino-http-print": "^1.0.1"
   },
   "devDependencies": {
     "pino-caller": "^1.0.1",
     "pino-debug": "^1.0.3"
   },
   "engines": {
-    "node": "8.9.4",
-    "npm": "5.6.0"
+    "node": "12.1.0",
+    "npm": "6.9.0"
   }
 }
