@@ -16,8 +16,7 @@ var pinoExpress = require('express-pino-logger')(printer);
 // var config = require('./config/config');
 // console.log('Config: ', config.db.uri);
 
-const SERVICE_PORT = process.env.SERVICE_PORT;
-var port = SERVICE_PORT || 4000;
+var port = process.env.PORT || 4000;
 
 var handlers = require('./handlers');
 
