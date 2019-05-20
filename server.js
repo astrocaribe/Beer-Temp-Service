@@ -1,21 +1,25 @@
 'use strinct';
 
-
 const express = require('express');
 const path = require('path');
 const favicon = require('express-favicon');
 
-var parseArgs = require('minimist');
+// var parseArgs = require('minimist');
 var bodyParser = require('body-parser');
 
 var printer = require('pino-http-print')();
 var pinoExpress = require('express-pino-logger')(printer);
 
+// As ooposed to using a config file, configure DB directly from
+// environment (Heroku doesn't make it simple to use config from
+// version control)
 // var config = require('./config/config');
-var handlers = require('./handlers');
+// console.log('Config: ', config.db.uri);
 
-var args = parseArgs(process.argv.slice(1));
-var port = args.port || process.env.PORT || 4000;
+const SERVICE_PORT = process.env.SERVICE_PORT;
+var port = SERVICE_PORT || 4000;
+
+var handlers = require('./handlers');
 
 var app = express();
 app.use(bodyParser.json({ type: 'application/json' }));

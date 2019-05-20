@@ -27,10 +27,10 @@ module.exports.temperatureHandler = function temperatureHandler(req, res) {
     if(!err) {
       var jsonResponse = {};
       jsonResponse.message = 'Ok!';
+      jsonResponse.payload = results;
       res.json(jsonResponse);
 
       res.status(201);
-      res.send(results);
     } else {
       req.log.error("Error: ", err);
     }
