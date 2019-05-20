@@ -3,7 +3,6 @@
 
 const { Pool } = require('pg');
 const connStr = process.env.DATABASE_URL;
-console.log('connStr: ', connStr);
 const pool = new Pool({
   connectionString: connStr,
 });
