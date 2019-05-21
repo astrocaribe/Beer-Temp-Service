@@ -8,8 +8,7 @@ More details to come soon!
 
 1. Download repo
 2. npm install
-3. Set environment variables `DATABASE_URL` and `SERVICE_PORT` for PG connection string and
-   service port, respectively.
+3. Set environment variables `DATABASE_URL` for PG connection string
 4. Run service with `node server.js`
 
 # Additional info

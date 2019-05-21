@@ -18,7 +18,7 @@ module.exports.pingHandler = function pingHandler(req, res) {
 };
 
 // Route that handles incoming temperatures
-module.exports.temperatureHandler = function temperatureHandler(req, res) {
+module.exports.postTemperatureHandler = function postTemperatureHandler(req, res) {
   'use strict';
   // console.log('[INFO]: ' + req.method + ' ' + req.url + ' starting.');
 
@@ -37,6 +37,20 @@ module.exports.temperatureHandler = function temperatureHandler(req, res) {
   });
 
   // console.log('Room: ' + body.room + '*F, Outside: ' + body.weather + '*F');
+};
+
+
+// Route that handles returning temperatures in query timeframe
+module.exports.getTemperatureHandler = function getTemperatureHandler(req, res) {
+  'use strict'
+
+  var params = req.params;
+  logic.getTemperatures(params.interval, function(err, results) {
+    if(!err) {
+      res.json(results);
+      res.status(200);
+    }
+  })
 };
 
 // Catch all handler for non-provisioned 404s

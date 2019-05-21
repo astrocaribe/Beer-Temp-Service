@@ -24,6 +24,9 @@ const createTableQuery = `CREATE TABLE IF NOT EXISTS temperatures (
 const addTempQuery = `INSERT INTO temperatures(temp_room, temp_ext, ts)
                       VALUES ($1, $2, $3);`
 
+const retrieveTemps = `SELECT temp_room, temp_ext, ts FROM temperatures
+                       WHERE ts > NOW() - INTERVAL '1 minutes'*$1;`
+
 pool.query(currentTimeQuery)
       .then(res => console.log(res.rows[0]))
       .catch(e => console.error(e.stack));
@@ -45,5 +48,21 @@ exports.postTemperatures = function postTemperatures( tempData, callback ) {
         client.release()
         callback(e.stack, null)
       })
+  })
+};
+
+exports.getTemperatures = function getTemperatures( interval, callback ) {
+  pool.connect()
+  .then(client => {
+    return client.query(retrieveTemps, [interval])
+    .then(res => {
+      client.release();
+      callback(null, res.rows);
+    })
+    .catch(e => {
+      console.log('Failure', e.stack);
+      client.release();
+      callback(e.stack, null);
+    })
   })
 };

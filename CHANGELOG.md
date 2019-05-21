@@ -6,6 +6,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2019-05-20
+### Added
+- 
+
+### Changed
+- Use environment variables instead of config.js for database configuration
+- Configure service port from env var first, default second
+
+### Fixed
+- temperatureHandler renames to postTemperatureHandler
+- 
+
+### Removed
+- 
+
+
 ## [0.2.0] - 2019-05-19
 ### Added
 - Persistent storage using Postgres

@@ -27,7 +27,8 @@ app.use(pinoExpress);
 
 /* **************** ROUTES **************** */
 app.get('/ping', handlers.pingHandler);
-app.post('/temperatures', handlers.temperatureHandler);
+app.post('/temperatures', handlers.postTemperatureHandler);
+app.get('/temperatures/:interval', handlers.getTemperatureHandler);
 app.get('*', handlers.noRouteHandler);
 /* **************** ROUTES **************** */
 
