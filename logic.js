@@ -13,6 +13,7 @@ module.exports.postTemperatures = (tempData, callback) => {
   });
 };
 
+// Login for GET temperatures
 module.exports.getTemperatures = (interval, callback) => {
   'use strict';
 
@@ -24,7 +25,4 @@ module.exports.getTemperatures = (interval, callback) => {
       callback(err, null);
     }
   })
-  // var intervalInMinutes = parseInt(interval.interval) * 60;
-
-  // console.log('Logic: ', interval);
 }

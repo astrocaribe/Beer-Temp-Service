@@ -6,20 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.0] - 2019-05-20
+## [0.3.0] - 2019-05-21
 ### Added
-- 
+- GET /temperatures/:interval route added
 
 ### Changed
-- Use environment variables instead of config.js for database configuration
-- Configure service port from env var first, default second
+- Update README to remove SERVICE_PORT env var
 
 ### Fixed
 - temperatureHandler renames to postTemperatureHandler
-- 
-
-### Removed
-- 
 
 
 ## [0.2.0] - 2019-05-19
