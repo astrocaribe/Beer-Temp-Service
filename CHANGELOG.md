@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2019-05-21
+### Added
+- GET /temperatures/:interval route added
+
+### Changed
+- Update README to remove SERVICE_PORT env var
+
+### Fixed
+- temperatureHandler renames to postTemperatureHandler
+
+
 ## [0.2.0] - 2019-05-19
 ### Added
 - Persistent storage using Postgres
